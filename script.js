@@ -1,0 +1,1 @@
+let bal=0;function buy(){bal+=300;document.getElementById("bal").textContent=bal;alert("Commande simulée ! Commission +300 HTG");}
