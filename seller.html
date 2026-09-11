@@ -3,44 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NATSHOP - Espace vendeur</title>
-<style>
-body{font-family:Arial,sans-serif;background:#0f172a;color:#fff;margin:0}
-header{background:#1d4ed8;padding:18px;text-align:center}
-main{padding:16px;max-width:480px;margin:auto}
-.card{background:#1e293b;border-radius:14px;padding:16px;margin:14px 0}
-input,textarea{width:100%;padding:12px;margin:8px 0;border:none;border-radius:10px;box-sizing:border-box}
-button{width:100%;padding:12px;background:#2563eb;color:#fff;border:none;border-radius:10px;font-weight:bold}
-small{color:#cbd5e1}
-</style>
+<title>NATSHOP Vendeur</title>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 </head>
 <body>
-<header>
-<h1>🏪 NATSHOP</h1>
-<p>Espace vendeur</p>
-</header>
-<main>
-<div class="card">
 <h2>Inscription vendeur</h2>
-<input placeholder="Nom de la boutique">
-<input placeholder="Téléphone">
-<input placeholder="E-mail">
-<button>Créer mon compte</button>
-<small>La connexion Firebase sera ajoutée ensuite.</small>
-</div>
-<div class="card">
-<h2>Publier un produit</h2>
-<input placeholder="Nom du produit">
-<input type="number" placeholder="Prix (Gdes)">
-<textarea placeholder="Description"></textarea>
-<input placeholder="Lien de la photo">
-<button>Publier</button>
-</div>
-<div class="card">
-<h2>Paiement NATSHOP</h2>
-<p><b>MonCash :</b> 37843029</p>
-<p><b>NatCash :</b> 32692155</p>
-</div>
-</main>
+
+<input id="nom" placeholder="Nom de la boutique"><br><br>
+<input id="tel" placeholder="Téléphone"><br><br>
+
+<button onclick="creer()">Créer mon compte</button>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBEHJAskO3whwRKF0YvpbF8CovaUVNh7LQ",
+  authDomain: "natshop-f63dc.firebaseapp.com",
+  databaseURL: "https://natshop-f63dc-default-rtdb.firebaseio.com",
+  projectId: "natshop-f63dc",
+  storageBucket: "natshop-f63dc.firebasestorage.app",
+  messagingSenderId: "351153362785",
+  appId: "1:351153362785:web:417f748d008f17a1c71720"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+function creer(){
+  const id = Date.now();
+  db.ref("vendors/"+id).set({
+    nom: document.getElementById("nom").value,
+    telephone: document.getElementById("tel").value
+  });
+  alert("Vendeur enregistré !");
+}
+</script>
 </body>
 </html>
