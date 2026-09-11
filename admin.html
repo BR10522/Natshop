@@ -1,55 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NATSHOP Admin</title>
-<style>
-body{font-family:Arial,sans-serif;background:#0f172a;color:#fff;margin:0}
-header{background:#1d4ed8;padding:18px;text-align:center}
-main{padding:16px;max-width:560px;margin:auto}
-.card{background:#1e293b;border-radius:14px;padding:16px;margin:14px 0}
-.stat{display:flex;justify-content:space-between;margin:8px 0}
-button{width:100%;padding:12px;background:#16a34a;color:#fff;border:none;border-radius:10px;font-weight:bold}
-.badge{background:#2563eb;padding:4px 10px;border-radius:999px;font-size:12px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NATSHOP Admin</title>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 </head>
 <body>
-<header>
-  <h1>🛡️ NATSHOP Admin</h1>
-  <p>Tableau de bord administrateur</p>
-</header>
-<main>
-  <div class="card">
-    <h2>Vue d'ensemble</h2>
-    <div class="stat"><span>Vendeurs</span><b>0</b></div>
-    <div class="stat"><span>Produits</span><b>0</b></div>
-    <div class="stat"><span>Commandes</span><b>0</b></div>
-    <div class="stat"><span>Commission</span><b>0 Gdes</b></div>
-  </div>
-  <div class="card">
-    <h2>Validation vendeur</h2>
-    <p><span class="badge">En attente</span></p>
-    <button>Valider le vendeur</button>
-  </div>
-  <div class="card">
-    <h2>Paiements officiels</h2>
-    <p><b>MonCash :</b> 37843029</p>
-    <p><b>NatCash :</b> 32692155</p>
-  </div>
-</main>
+  <h1>NATSHOP Admin</h1>
+
+  <p>Vendeurs : <span id="vendeurs">0</span></p>
+  <p>Produits : <span id="produits">0</span></p>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBEHJAskO3whwRKF0YvpbF8CovaUVNh7LQ",
+      authDomain: "natshop-f63dc.firebaseapp.com",
+      databaseURL: "https://natshop-f63dc-default-rtdb.firebaseio.com",
+      projectId: "natshop-f63dc",
+      storageBucket: "natshop-f63dc.firebasestorage.app",
+      messagingSenderId: "351153362785",
+      appId: "1:351153362785:web:417f748d008f17a1c71720"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+  </script>
 </body>
 </html>
-const firebaseConfig = {
-  apiKey: "AIzaSyBEHJAskO3whwRKF0YvpbF8CovaUVNh7LQ",
-  authDomain: "natshop-f63dc.firebaseapp.com",
-  databaseURL: "https://natshop-f63dc-default-rtdb.firebaseio.com",
-  projectId: "natshop-f63dc",
-  storageBucket: "natshop-f63dc.firebasestorage.app",
-  messagingSenderId: "351153362785",
-  appId: "1:351153362785:web:417f748d008f17a1c71720"
-};
-<script>
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
-</script>
