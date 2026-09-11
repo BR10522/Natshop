@@ -15,7 +15,7 @@
 <input id="tel" placeholder="Téléphone"><br><br>
 
 <button onclick="creer()">Créer mon compte</button>
-
+<button onclick="publier()">Publier</button>
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyBEHJAskO3whwRKF0YvpbF8CovaUVNh7LQ",
@@ -25,7 +25,8 @@ const firebaseConfig = {
   storageBucket: "natshop-f63dc.firebasestorage.app",
   messagingSenderId: "351153362785",
   appId: "1:351153362785:web:417f748d008f17a1c71720"
-};
+};<input id="produit" placeholder="Nom du produit">
+<input id="prix" placeholder="Prix en Gdes">
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
@@ -35,6 +36,7 @@ function creer(){
   db.ref("vendors/"+id).set({
     nom: document.getElementById("nom").value,
     telephone: document.getElementById("tel").value
+    
   });
   alert("Vendeur enregistré !");
 }
