@@ -1,1 +1,36 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NATSHOP</title><link rel="stylesheet" href="style.css"></head><body><header><h1>NATSHOP</h1><p>Marketplace Haïtienne</p></header><main><input id="search" placeholder="Rechercher un produit..."><div id="products"></div><h2>Paiement</h2><div class="pay">MonCash : 37843029</div><div class="pay">NatCash : 32692155</div></main><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NATSHOP</title>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
+</head>
+<body>
+  <h1>NATSHOP Marketplace</h1>
+  <div id="liste"></div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBEHJAskO3whwRKF0YvpbF8CovaUVNh7LQ",
+      authDomain: "natshop-f63dc.firebaseapp.com",
+      databaseURL: "https://natshop-f63dc-default-rtdb.firebaseio.com",
+      projectId: "natshop-f63dc",
+      storageBucket: "natshop-f63dc.firebasestorage.app",
+      messagingSenderId: "351153362785",
+      appId: "1:351153362785:web:417f748d008f17a1c71720"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    db.ref("products").on("value", snap => {
+      let html = "";
+      snap.forEach(item => {
+        const p = item.val();
+        html += "<p><b>"+p.nom+"</b> - "+p.prix+" Gdes</p>";
+      });
+      document.getElementById("liste").innerHTML = html;
+    });
+  </script>
+</body>
+</html>
