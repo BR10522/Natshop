@@ -1,3 +1,46 @@
-Nom : Écouteurs Pro
-Prix : 1500
-Image : une URL d'image
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NATSHOP Vendeur</title>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
+</head>
+<body>
+  <h2>Publier un produit</h2>
+
+  <input id="produit" placeholder="Nom du produit"><br><br>
+  <input id="prix" type="number" placeholder="Prix (Gdes)"><br><br>
+  <input id="image" placeholder="Lien de l'image"><br><br>
+
+  <button onclick="publier()">Publier</button>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBEHJAskO3whwRKF0YvpbF8CovaUVNh7LQ",
+      authDomain: "natshop-f63dc.firebaseapp.com",
+      databaseURL: "https://natshop-f63dc-default-rtdb.firebaseio.com",
+      projectId: "natshop-f63dc",
+      storageBucket: "natshop-f63dc.firebasestorage.app",
+      messagingSenderId: "351153362785",
+      appId: "1:351153362785:web:417f748d008f17a1c71720"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function publier() {
+      const id = Date.now();
+      db.ref("products/" + id).set({
+        nom: document.getElementById("produit").value,
+        prix: document.getElementById("prix").value,
+        image: document.getElementById("image").value
+      });
+
+      alert("Produit publié !");
+    }
+  </script>
+</body>
+</html>
