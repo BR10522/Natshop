@@ -40,3 +40,16 @@ button{width:100%;padding:12px;background:#16a34a;color:#fff;border:none;border-
 </main>
 </body>
 </html>
+const firebaseConfig = {
+  apiKey: "AIzaSyBEHJAskO3whwRKF0YvpbF8CovaUVNh7LQ",
+  authDomain: "natshop-f63dc.firebaseapp.com",
+  databaseURL: "https://natshop-f63dc-default-rtdb.firebaseio.com",
+  projectId: "natshop-f63dc",
+  storageBucket: "natshop-f63dc.firebasestorage.app",
+  messagingSenderId: "351153362785",
+  appId: "1:351153362785:web:417f748d008f17a1c71720"
+};
+<script>
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
