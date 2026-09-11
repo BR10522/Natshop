@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>NATSHOP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NATSHOP Marketplace</title>
+
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database-compat.js"></script>
 </head>
 <body>
-  <h1>NATSHOP Marketplace</h1>
+  <h1>🛍 NATSHOP Marketplace</h1>
+
   <div id="liste"></div>
 
   <script>
@@ -23,11 +27,16 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    db.ref("products").on("value", snap => {
+    db.ref("products").on("value", (snap) => {
       let html = "";
-      snap.forEach(item => {
+      snap.forEach((item) => {
         const p = item.val();
-        html += "<p><b>"+p.nom+"</b> - "+p.prix+" Gdes</p>";
+        html += `
+          <div style="border:1px solid #ddd;padding:10px;margin:10px">
+            <img src="${p.image}" width="120"><br>
+            <b>${p.nom}</b><br>
+            ${p.prix} Gdes
+          </div>`;
       });
       document.getElementById("liste").innerHTML = html;
     });
